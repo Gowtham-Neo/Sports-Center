@@ -1,14 +1,13 @@
-import React from 'react'
-import { useState } from 'react'
-import AccountLayout from './layout/AccountLayout'
+
+import { RouterProvider } from "react-router-dom";
+import router from "./routes";
 
 function App() {
-
   return (
     <>
-      <AccountLayout/>
+      <RouterProvider router={router} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

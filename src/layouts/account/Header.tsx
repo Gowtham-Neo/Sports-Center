@@ -1,4 +1,4 @@
-import { useState, useContext, Fragment } from "react";
+import {  Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import images from "../../assets/images/zrzy2s1rx6gmcj1qvsjp.webp";
@@ -24,7 +24,7 @@ const Appbar = () => {
 
   return (
     <>
-      <Disclosure as="nav" className="border-b border-slate-200 m-0 p-4">
+      <Disclosure as="nav" className="border-b border-slate-200 p-4">
         {({}) => (
           <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
