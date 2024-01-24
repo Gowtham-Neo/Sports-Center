@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API_ENDPOINT } from "../../config/constants";
 import { FiRefreshCw } from "react-icons/fi";
+
 interface Match {
   id: number;
   name: string;
@@ -19,7 +20,7 @@ const LiveMatchesList: React.FC = () => {
     try {
       const response = await fetch(`${API_ENDPOINT}/matches`);
       if (!response.ok) {
-        throw new Error("Network response was not ok.");
+        throw new Error("Error while fetching");
       }
       const data = await response.json();
       const liveMatchesData = data.matches.filter(
@@ -71,13 +72,27 @@ const LiveMatchesList: React.FC = () => {
     };
 
     fetchDataAndDetails();
-  }, []);
+  }, [setMatches]);
 
   const refreshMatch = async (matchId: number) => {
     try {
-      alert(`Refresh match with ID ${matchId}`);
+      const response = await fetch(`${API_ENDPOINT}/matches/${matchId}`);
+      if (!response.ok) {
+        throw new Error("Error while fetching");
+      }
+      const updatedMatch = await response.json();
+
+      setMatches((prevMatches) => {
+        const updatedMatches = prevMatches.map((match) =>
+          match.id === updatedMatch.id ? { ...match, ...updatedMatch } : match
+        );
+  
+        return updatedMatches;
+      });
+      console.log(`Refresh match with ID ${matches}`);
+
     } catch (error) {
-      alert("Error refreshing match:");
+      console.log("Error refreshing match:");
     }
   };
 
