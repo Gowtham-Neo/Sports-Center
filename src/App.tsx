@@ -1,11 +1,13 @@
-
 import { RouterProvider } from "react-router-dom";
 import router from "./routes";
+import { ArticlesProvider } from "./context/Article/context";
 
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <ArticlesProvider>
+        <RouterProvider router={router} />
+      </ArticlesProvider>
     </>
   );
 }
