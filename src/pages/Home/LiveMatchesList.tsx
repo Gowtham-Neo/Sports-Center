@@ -26,17 +26,17 @@ const LiveMatchesList: React.FC = () => {
       <h2 className="mb-2 text-2xl font-semibold md:text-white">
         Live Matches
       </h2>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto w-full">
         {isLoading && <p>Loading...</p>}
         {isError && <p>Error fetching live matches</p>}
         {!isLoading && !isError && (
-          <ul className="flex space-x-3">
+          <ul className="md:flex space-x-3 flex">
             {matches
               .filter((match) => match.isRunning)
               .map((match) => (
                 <li
                   key={match.id}
-                  className="p-4 mr-4 bg-gray-100 border rounded-lg shadow-lg border-10 border-black-900 min-w-36"
+                  className="p-4 mr-4 bg-gray-100 border rounded-lg shadow-lg border-10 border-black-900 sm:w-full "
                 >
                   <div className="flex items-center justify-between">
                     <p className="font-serif text-xl font-semibold">

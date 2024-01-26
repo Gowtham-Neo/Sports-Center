@@ -17,11 +17,9 @@ export interface Article {
   thumbnail: string;
   date: string;
   summary: string;
+  content: string;
   teams: Team[];
-  sport: {
-    id: number;
-    name: string;
-  };
+  sport: Sport[];
 }
 
 export interface Team {
@@ -47,7 +45,13 @@ export enum ArticleListAvailableAction {
 
 export type ArticleActions =
   | { type: ArticleListAvailableAction.FETCH_ARTICLES_LIST_REQUEST }
-  | { type:  ArticleListAvailableAction.FETCH_ARTICLES_LIST_SUCCESS; payload: Article[] }
-  | { type:  ArticleListAvailableAction.FETCH_ARTICLES_LIST_FAILURE; payload: string };
+  | {
+      type: ArticleListAvailableAction.FETCH_ARTICLES_LIST_SUCCESS;
+      payload: Article[];
+    }
+  | {
+      type: ArticleListAvailableAction.FETCH_ARTICLES_LIST_FAILURE;
+      payload: string;
+    };
 
 export type ArticleDispatch = React.Dispatch<ArticleActions>;
