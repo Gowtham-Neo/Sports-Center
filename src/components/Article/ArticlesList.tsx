@@ -6,11 +6,10 @@ import {
 } from "../../context/Article/context";
 import { fetchArticles } from "../../context/Article/action";
 import SportsList from "./SportsList";
-// import FavoriteComponent from "./FavoriteComponent";
-// import ReadMoreDialog from "./ReadMoreDialog";
+
 
 interface ArticleListProps {
-  onArticleClick: (article: any) => void; // Adjust the type accordingly
+  onArticleClick: (article: any) => void; 
 }
 
 const ArticleList: React.FC<ArticleListProps> = ({ onArticleClick }) => {

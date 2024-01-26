@@ -36,7 +36,7 @@ const LiveMatchesList: React.FC = () => {
               .map((match) => (
                 <li
                   key={match.id}
-                  className="p-4 mr-4 bg-gray-100 border rounded-lg shadow-lg border-10 border-black-900 sm:w-full "
+                  className="p-4 mr-4 bg-gray-100 border rounded-lg shadow-lg border-10 border-black-900 "
                 >
                   <div className="flex items-center justify-between">
                     <p className="font-serif text-xl font-semibold">

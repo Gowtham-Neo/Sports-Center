@@ -1,5 +1,6 @@
 import React from "react";
 import Article from "../../components/Article/index";
+import FavoriteContainer from "../../components/Favorite";
 
 const Trending: React.FC = () => {
   return (
@@ -10,6 +11,7 @@ const Trending: React.FC = () => {
           <Article />
         </div>
         <div className="md:col-span-1">
+          <FavoriteContainer/>
         </div>
       </div>
     </div>

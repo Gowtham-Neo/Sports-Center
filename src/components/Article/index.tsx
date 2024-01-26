@@ -2,14 +2,14 @@
 import React, { useState } from "react";
 import ArticlesList from "./ArticlesList";
 import ArticleReadMore from "./ArticleReadMore";
-import { Article as ArticleType } from "../../context/Article/types";
+import { Article  } from "../../context/Article/types";
 
 const ArticleContainer: React.FC = () => {
-  const [selectedArticle, setSelectedArticle] = useState<ArticleType | null>(
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(
     null
   );
 
-  const handleArticleClick = (article: ArticleType) => {
+  const handleArticleClick = (article: Article) => {
     setSelectedArticle(article);
   };
 

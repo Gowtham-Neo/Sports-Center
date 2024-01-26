@@ -37,18 +37,17 @@ const SportsList: React.FC<SportsListProps> = ({ onSportClick }) => {
   }, [sports]);
 
   return (
-    <div className="bg-slate-800 overflow-x-auto rounded-lg">
-      <ul className="flex space-x-5 p-5">
+    <div className="relative ">
+      <select
+        className="p-2 border rounded bg-gray-200"
+        onChange={(e) => handleSportClick(e.target.value)}
+      >
         {sports.map((sport) => (
-          <button
-            key={sport.id}
-            className="font-medium active:text-white hover:text-white border-red-700 text-gray-400 "
-            onClick={() => handleSportClick(sport.name)}
-          >
+          <option key={sport.id} value={sport.name}>
             {sport.name}
-          </button>
+          </option>
         ))}
-      </ul>
+      </select>
     </div>
   );
 };
