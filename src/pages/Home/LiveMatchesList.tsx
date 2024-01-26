@@ -1,147 +1,76 @@
-import React, { useState, useEffect } from "react";
-import { API_ENDPOINT } from "../../config/constants";
+import React, { useEffect } from "react";
 import { FiRefreshCw } from "react-icons/fi";
-
-interface Match {
-  id: number;
-  name: string;
-  location: string;
-  sportName: string;
-  endsAt: string;
-  isRunning: boolean;
-  teams: { id: number; name: string }[];
-  score: Partial<Record<string, string>>;
-}
+import {
+  useMatchesState,
+  useMatchesDispatch,
+} from "../../context/LiveMatches/context"; 
+import {
+  fetchLiveMatchesAndDetails,
+  refreshMatch,
+} from "../../context/LiveMatches/action";
 
 const LiveMatchesList: React.FC = () => {
-  const [matches, setMatches] = useState<Match[]>([]);
-
-  const fetchLiveMatchesData = async () => {
-    try {
-      const response = await fetch(`${API_ENDPOINT}/matches`);
-      if (!response.ok) {
-        throw new Error("Error while fetching");
-      }
-      const data = await response.json();
-      const liveMatchesData = data.matches.filter(
-        (match: any) => match.isRunning
-      );
-
-      return liveMatchesData;
-    } catch (error) {
-      console.error("Error fetching live matches data:", error);
-      throw error;
-    }
-  };
-
-  const fetchLiveMatchesDetails = async (liveMatchesData: Match[]) => {
-    try {
-      const detailsPromises = liveMatchesData.map(async (match) => {
-        const matchDetailsResponse = await fetch(
-          `${API_ENDPOINT}/matches/${match.id}`
-        );
-        if (!matchDetailsResponse.ok) {
-          throw new Error("Network response for match details was not ok.");
-        }
-        return matchDetailsResponse.json();
-      });
-
-      const liveMatchesDetails = await Promise.all(detailsPromises);
-      return liveMatchesDetails;
-    } catch (error) {
-      console.error("Error fetching live match details:", error);
-      throw error;
-    }
-  };
+  const { matches, isLoading, isError } = useMatchesState();
+  const dispatch = useMatchesDispatch();
 
   useEffect(() => {
-    const fetchDataAndDetails = async () => {
-      try {
-        const liveMatchesData = await fetchLiveMatchesData();
-        console.log("Live data", liveMatchesData);
+    fetchLiveMatchesAndDetails(dispatch);
+  }, [dispatch]);
 
-        const liveMatchesDetails = await fetchLiveMatchesDetails(
-          liveMatchesData
-        );
-        console.log("live data details", liveMatchesDetails);
-
-        setMatches(liveMatchesDetails);
-      } catch (error) {
-        console.error("Error fetching live matches and details:", error);
-      }
-    };
-
-    fetchDataAndDetails();
-  }, [setMatches]);
-
-  const refreshMatch = async (matchId: number) => {
-    try {
-      const response = await fetch(`${API_ENDPOINT}/matches/${matchId}`);
-      if (!response.ok) {
-        throw new Error("Error while fetching");
-      }
-      const updatedMatch = await response.json();
-
-      setMatches((prevMatches) => {
-        const updatedMatches = prevMatches.map((match) =>
-          match.id === updatedMatch.id ? { ...match, ...updatedMatch } : match
-        );
-  
-        return updatedMatches;
-      });
-      console.log(`Refresh match with ID ${matches}`);
-
-    } catch (error) {
-      console.log("Error refreshing match:");
-    }
+  const handleRefreshMatch = async (matchId: number) => {
+    refreshMatch(dispatch, matchId);
   };
 
   return (
-    <div className="md:-mt-10 p-3 border border-none shadow-sm shadow-black rounded-lg md:m-5 md:bg-gradient-to-r from-red-700 to-green-700">
-      <h2 className="text-2xl font-semibold mb-2 md:text-white">
+    <div className="p-3 border border-none rounded-lg shadow-sm md:-mt-10 shadow-black md:m-5 md:bg-gradient-to-r from-red-700 to-green-700">
+      <h2 className="mb-2 text-2xl font-semibold md:text-white">
         Live Matches
       </h2>
       <div className="overflow-x-auto">
-        <ul className="flex space-x-3">
-          {matches
-            .filter((match) => match.isRunning)
-            .map((match) => (
-              <li
-                key={match.id}
-                className="p-4 mr-4 bg-gray-100 border shadow-lg border-10 border-black-900 rounded-lg min-w-36"
-              >
-                <div className="flex justify-between items-center">
-                  <p className="text-xl font-semibold font-serif">
-                    {match.sportName}
-                  </p>
-                  <button onClick={()=>refreshMatch(match.id)}>
-                    <FiRefreshCw />
-                  </button>
-                </div>
-                <p className="text-lg">{match.location}</p>
-                <div className=" text-left font-medium">
-                  <p>
-                    {match.teams[0]?.name}
-                    <span>
-                      {"  ( "}
-                      {match.score?.[match.teams[0]?.name]}
-                      {"* ) "}
-                    </span>
-                  </p>
-                </div>
-                <div className=" text-left font-medium">
-                  <p>
-                    {match.teams[1]?.name}
-                    <span>
-                      {"  ( "}
-                      {match.score?.[match.teams[1]?.name]}
-                      {"* ) "}
-                    </span>
-                  </p>
-                </div>
-              </li>
-            ))}
-        </ul>
+        {isLoading && <p>Loading...</p>}
+        {isError && <p>Error fetching live matches</p>}
+        {!isLoading && !isError && (
+          <ul className="flex space-x-3">
+            {matches
+              .filter((match) => match.isRunning)
+              .map((match) => (
+                <li
+                  key={match.id}
+                  className="p-4 mr-4 bg-gray-100 border rounded-lg shadow-lg border-10 border-black-900 min-w-36"
+                >
+                  <div className="flex items-center justify-between">
+                    <p className="font-serif text-xl font-semibold">
+                      {match.sportName}
+                    </p>
+                    <button onClick={() => handleRefreshMatch(match.id)}>
+                      <FiRefreshCw />
+                    </button>
+                  </div>
+                  <p className="text-lg">{match.location}</p>
+                  <div className="font-medium text-left ">
+                    <p>
+                      {match.teams[0]?.name}
+                      <span>
+                        {"  ( "}
+                        {match.score?.[match.teams[0]?.name]}
+                        {"* ) "}
+                      </span>
+                    </p>
+                  </div>
+                  <div className="font-medium text-left ">
+                    <p>
+                      {match.teams[1]?.name}
+                      <span>
+                        {"  ( "}
+                        {match.score?.[match.teams[1]?.name]}
+                        {"* ) "}
+                      </span>
+                    </p>
+                  </div>
+                </li>
+              ))}
+          </ul>
+        )}
       </div>
     </div>
   );

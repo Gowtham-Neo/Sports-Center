@@ -9,7 +9,7 @@ import SportsList from "./SportsList";
 // import ReadMoreDialog from "./ReadMoreDialog";
 
 const ArticleList: React.FC = () => {
-  const [selectedSport, setSelectedSport] = useState<string | null>(null);
+  const [selectedSport, setSelectedSport] = useState<string>();
 
   const articlesDispatch = useArticlesDispatch();
   const articlesState = useArticlesState();
@@ -31,7 +31,7 @@ const ArticleList: React.FC = () => {
         <SportsList onSportClick={handleSportClick} />
         <div className="w-full">
           {isLoading ? (
-            <p className=" font-serif text-xl pt-10 ps-96">Loading...</p>
+            <p className="pt-10 font-serif text-xl ps-96">Loading...</p>
           ) : (
             <div>
               {articles
@@ -43,25 +43,25 @@ const ArticleList: React.FC = () => {
                 .map((article: any) => (
                   <div
                     key={article.id}
-                    className="bg-white rounded-lg shadow-md p-4 mb-4 flex flex-col md:flex-row my-4 border border-gray-300"
+                    className="flex flex-col p-4 my-4 mb-4 bg-white border border-gray-300 rounded-lg shadow-md md:flex-row"
                   >
                     <div className="w-full md:w-3/4">
                       <h2 className="text-lg font-medium">{article.title}</h2>
                       <h2 className="text-gray-600">{article.summary}</h2>
                       <button
-                        className="flex text-gray-700 underline-none hover:underline hover:text-gray-900 cursor-pointer  text-center"
+                        className="flex text-center text-gray-700 cursor-pointer underline-none hover:underline hover:text-gray-900"
                       >
                         Read More...
                       </button>
-                      <p className="text-gray-600 mt-2">
+                      <p className="mt-2 text-gray-600">
                         {new Date(article.date).toLocaleDateString()}
                       </p>
                     </div>
-                    <div className="w-full md:w-1/4 mt-4 md:mt-0">
+                    <div className="w-full mt-4 md:w-1/4 md:mt-0">
                       <img
                         src={article.thumbnail}
                         alt={article.title}
-                        className=" rounded-xl shadow-lg shadow-black"
+                        className="shadow-lg rounded-xl shadow-black"
                       />
                     </div>
                   </div>
