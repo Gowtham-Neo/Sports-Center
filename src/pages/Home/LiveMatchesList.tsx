@@ -22,15 +22,16 @@ const LiveMatchesList: React.FC = () => {
   };
 
   return (
-    <div className="p-3 border border-none rounded-lg shadow-sm md:-mt-10 shadow-black md:m-5 md:bg-gradient-to-r from-red-700 to-green-700">
-      <h2 className="mb-2 text-2xl font-semibold md:text-white">
+    <div className="p-3 border border-none rounded-lg shadow-sm md:-mt-10 shadow-black md:m-5 bg-gradient-to-r from-red-700 to-green-700">
+      <h2 className="mb-2 text-xl font-semibold md:text-2xl md:text-white">
         Live Matches
       </h2>
-      <div className="overflow-x-auto w-full">
+      <div className="overflow-x-auto ">
+        <div className=" w-max">
         {isLoading && <p>Loading...</p>}
         {isError && <p>Error fetching live matches</p>}
         {!isLoading && !isError && (
-          <ul className="md:flex space-x-3 flex">
+          <ul className="flex space-x-3 md:flex">
             {matches
               .filter((match) => match.isRunning)
               .map((match) => (
@@ -39,15 +40,15 @@ const LiveMatchesList: React.FC = () => {
                   className="p-4 mr-4 bg-gray-100 border rounded-lg shadow-lg border-10 border-black-900 "
                 >
                   <div className="flex items-center justify-between">
-                    <p className="font-serif text-xl font-semibold">
+                    <p className="font-serif font-semibold md:text-xl">
                       {match.sportName}
                     </p>
                     <button onClick={() => handleRefreshMatch(match.id)}>
                       <FiRefreshCw />
                     </button>
                   </div>
-                  <p className="text-lg">{match.location}</p>
-                  <div className="font-medium text-left ">
+                  <p className="md:text-lg">{match.location}</p>
+                  <div className="text-left md:font-medium ">
                     <p>
                       {match.teams[0]?.name}
                       <span>
@@ -57,7 +58,7 @@ const LiveMatchesList: React.FC = () => {
                       </span>
                     </p>
                   </div>
-                  <div className="font-medium text-left ">
+                  <div className="text-left md:font-medium ">
                     <p>
                       {match.teams[1]?.name}
                       <span>
@@ -71,6 +72,7 @@ const LiveMatchesList: React.FC = () => {
               ))}
           </ul>
         )}
+        </div>
       </div>
     </div>
   );

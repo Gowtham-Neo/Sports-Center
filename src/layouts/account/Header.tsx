@@ -1,4 +1,4 @@
-import {  Fragment } from "react";
+import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import images from "../../assets/images/zrzy2s1rx6gmcj1qvsjp.webp";
@@ -24,30 +24,30 @@ const Appbar = () => {
 
   return (
     <>
-      <Disclosure as="nav" className="border-b border-slate-200 p-4">
+      <Disclosure as="nav" className="p-4 border-b border-slate-200">
         {({}) => (
           <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-start md:justify-between">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <img className="h-8" src={images} alt="Sports-Logo" />
+                  <img className="h-4 md:h-8" src={images} alt="Sports-Logo" />
                 </div>
-                <a href="#" className=" font-serif font-bold text-2xl">
+                <a href="#" className="font-serif font-bold md:text-2xl ">
                   Sports Center
                 </a>
               </div>
-              <div className="hidden md:block">
-                <div className="flex items-center ml-4 md:ml-6">
+              <div className="block">
+                <div className="flex items-center ml-6">
                   {localStorage.getItem("auth_token") && (
-                    <div className="md:block">
-                    <IoSettingsOutline  className="h-8 w-6 text-gray-500 hover:text-black"/>
+                    <div className="block">
+                      <IoSettingsOutline className="w-6 h-8 text-gray-500 hover:text-black" />
                     </div>
                   )}
                   <Menu as="div" className="relative ml-3">
                     <div>
                       <Menu.Button className="p-1 text-gray-400 bg-white rounded-full hover:text-red-600">
                         <UserCircleIcon
-                          className="w-6 h-6"
+                          className="w-5 h-5 md:h-6 md:w-6"
                           aria-hidden="true"
                         />
                       </Menu.Button>

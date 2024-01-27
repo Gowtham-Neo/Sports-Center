@@ -43,11 +43,11 @@ const TeamsList: React.FC<TeamsListProps> = ({ onTeamClick }) => {
   };
 
   return (
-    <div className="flex justify-center items-center mt-2 gap-4 mb-3">
+    <div className="items-start justify-center gap-4 mt-2 mb-3 md:flex md:items-center">
       <SportsList onSportClick={handleSportClick}/>
       <div className="relative">
         <select
-          className="p-2 border rounded bg-gray-200"
+          className="p-2 bg-gray-200 border rounded"
           onChange={(e) => handleTeamClick(e.target.value)}
         >
           <option>Select Team</option>

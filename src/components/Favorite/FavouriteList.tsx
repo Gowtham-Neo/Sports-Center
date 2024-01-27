@@ -64,14 +64,14 @@ const FavouriteArticleList: React.FC<FavouriteArticleListProps> = ({
   }, [selectedTeam]); 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-5">
       <TeamList onTeamClick={handleTeamClick} />
       <div className="w-full">
         {isLoading && (
-          <p className="pt-10 font-serif text-xl ps-36">Loading...</p>
+          <p className="pt-10 font-serif text-xl md:ps-36">Loading...</p>
         )}
         {isError && (
-          <p className="pt-10 font-serif text-xl ps-96">
+          <p className="pt-10 font-serif text-xl md:ps-96">
             Error fetching Articles
           </p>
         )}
@@ -90,7 +90,7 @@ const FavouriteArticleList: React.FC<FavouriteArticleListProps> = ({
                   </p>
                 <button
                   onClick={() => handleArticleReadMore(article.id)}
-                  className="flex text-white cursor-pointer underline-none border rounded-md bg-slate-800 w-full text-center px-36 py-2 mt-4"
+                  className="flex px-12 py-2 mt-4 text-center text-white border rounded-md cursor-pointer w-max underline-none bg-slate-800 "
                 >
                   Read More
                 </button>

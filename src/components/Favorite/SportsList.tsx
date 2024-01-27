@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { API_ENDPOINT } from "../../config/constants";
-import {Sport} from "../../context/Article/types"
+import { Sport } from "../../context/Article/types";
 
 interface SportsListProps {
   onSportClick: (selectedSport: string) => void;
@@ -37,9 +37,10 @@ const SportsList: React.FC<SportsListProps> = ({ onSportClick }) => {
   }, [sports]);
 
   return (
-    <div className="relative ">
+    <div className="relative mb-5 text md:-mb-0">
+      {" "}
       <select
-        className="p-2 border rounded bg-gray-200"
+        className="p-2 bg-gray-200 border rounded"
         onChange={(e) => handleSportClick(e.target.value)}
       >
         {sports.map((sport) => (
@@ -53,4 +54,3 @@ const SportsList: React.FC<SportsListProps> = ({ onSportClick }) => {
 };
 
 export default SportsList;
-
