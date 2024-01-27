@@ -13,7 +13,6 @@ const ChangePasswordForm: React.FC = () => {
   const handlesubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Basic input validation
     if (!current_password || !new_password) {
       setError("Please fill in both fields.");
       return;

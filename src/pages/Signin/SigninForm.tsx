@@ -5,10 +5,17 @@ import { useNavigate } from "react-router-dom";
 const SigninForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
   const navigate = useNavigate();
 
   const handlesubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!email || !password) {
+        setError("Please fill in both fields.");
+        return;
+      }
     try {
       const response = await fetch(`${API_ENDPOINT}/users/sign_in`, {
         method: "POST",
@@ -60,6 +67,7 @@ const SigninForm: React.FC = () => {
             className="w-full px-3 py-2 leading-tight text-gray-700 border rounded-md focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
           />
         </div>
+        {error && <p className="text-red-500">{error}</p>}
         <button
           type="submit"
           className="w-full px-4 py-2 mt-4 font-semibold text-white bg-blue-700 rounded-md hover:bg-blue-800 focus:outline-none focus:shadow-outline-gray"
