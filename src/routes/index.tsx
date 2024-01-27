@@ -3,6 +3,7 @@ import { Home } from "../pages/Home";
 import Signin from "../pages/Signin"
 import Signup from "../pages/Signup"
 import Logout from "../pages/Logout";
+import ChangePassword from "../pages/ChangePassword/";
 // import NotFound from "../pages/Notfound";
 
 const router = createBrowserRouter([
@@ -22,10 +23,14 @@ const router = createBrowserRouter([
     path: "/logout",
     element: <Logout />
   },
-//   {
-//     path: "*",
-//     element: <NotFound />
-//   },
+  {
+    path: "/change-password",
+    element: <ChangePassword />
+  },
+  // {
+  //   path: "*",
+  //   element: <NotFound />
+  // },
   
 ]);
 export default router;
