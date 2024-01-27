@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
-import images from "../../assets/images/zrzy2s1rx6gmcj1qvsjp.webp";
+import logo from "../../assets/images/logo.webp";
 import { IoSettingsOutline } from "react-icons/io5";
 
 const classNames = (...classes: string[]): string =>
@@ -30,7 +30,7 @@ const Appbar = () => {
             <div className="flex items-center justify-start md:justify-between">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <img className="h-4 md:h-8" src={images} alt="Sports-Logo" />
+                  <img className="h-4 md:h-8" src={logo} alt="Sports-Logo" />
                 </div>
                 <a href="#" className="font-serif font-bold md:text-2xl ">
                   Sports Center

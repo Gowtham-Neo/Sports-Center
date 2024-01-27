@@ -4,7 +4,7 @@ import Signin from "../pages/Signin"
 import Signup from "../pages/Signup"
 import Logout from "../pages/Logout";
 import ChangePassword from "../pages/ChangePassword/";
-// import NotFound from "../pages/Notfound";
+import NotFoundPage from "../pages/NotFoundPage";
 
 const router = createBrowserRouter([
   {
@@ -27,10 +27,10 @@ const router = createBrowserRouter([
     path: "/change-password",
     element: <ChangePassword />
   },
-  // {
-  //   path: "*",
-  //   element: <NotFound />
-  // },
+  {
+    path: "*",
+    element: <NotFoundPage />
+  },
   
 ]);
 export default router;
