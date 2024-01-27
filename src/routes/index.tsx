@@ -1,27 +1,27 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home } from "../pages/Home";
-// import Signin from "../pages/signin"
-// import Signup from "../pages/signup"
-// import Logout from "../pages/logout";
+import Signin from "../pages/Signin"
+import Signup from "../pages/Signup"
+import Logout from "../pages/Logout";
 // import NotFound from "../pages/Notfound";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/",  
     element: <Home/>
   },
-//   {
-//     path: "/signin",
-//     element: <Signin />
-//   },
-//   {
-//     path: "/signup",
-//     element: <Signup />
-//   },
-//   {
-//     path: "/logout",
-//     element: <Logout />
-//   },
+  {
+    path: "/signin",
+    element: <Signin />
+  },
+  {
+    path: "/signup",
+    element: <Signup />
+  },
+  {
+    path: "/logout",
+    element: <Logout />
+  },
 //   {
 //     path: "*",
 //     element: <NotFound />

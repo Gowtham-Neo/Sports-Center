@@ -18,7 +18,7 @@ const Appbar = () => {
     { name: "Sign Up", href: "/signup" },
   ];
 
-  const additionalUserNavigation = localStorage.getItem("authToken")
+  const additionalUserNavigation = localStorage.getItem("auth_token")
     ? sportUserNavigation
     : normalUserNavigation;
 
@@ -38,7 +38,7 @@ const Appbar = () => {
               </div>
               <div className="hidden md:block">
                 <div className="flex items-center ml-4 md:ml-6">
-                  {localStorage.getItem("authToken") && (
+                  {localStorage.getItem("auth_token") && (
                     <div className="md:block">
                     <IoSettingsOutline  className="h-8 w-6 text-gray-500 hover:text-black"/>
                     </div>
