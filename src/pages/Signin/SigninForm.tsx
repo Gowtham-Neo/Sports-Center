@@ -81,6 +81,12 @@ const SigninForm: React.FC = () => {
           Sign Up
         </a>
       </p>
+      <p className="mt-4 text-sm text-gray-600">
+        Normal user?{" "}
+        <a href="/" className="text-blue-500 hover:text-blue-700">
+          Home
+        </a>
+      </p>
     </div>
   );
 };
