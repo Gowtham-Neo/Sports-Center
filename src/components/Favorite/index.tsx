@@ -1,4 +1,3 @@
-// Parent component (e.g., ArticleContainer)
 import React, { useState } from "react";
 import FavouriteList from "./FavouriteList";
 import ArticleReadMore from "../Article/ArticleReadMore";

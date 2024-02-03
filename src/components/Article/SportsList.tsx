@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { API_ENDPOINT } from "../../config/constants";
-import {Sport} from "../../context/Article/types"
+import { Sport } from "../../context/Article/types";
 
 interface SportsListProps {
   onSportClick: (selectedSport: string) => void;
+  onYourNewsClick: (isYourNewsClicked: boolean) => void;
 }
 
-const SportsList: React.FC<SportsListProps> = ({ onSportClick }) => {
+const SportsList: React.FC<SportsListProps> = ({
+  onSportClick,
+  onYourNewsClick,
+}) => {
   const [sports, setSports] = useState<Sport[]>([]);
+  const [isYourNewsClicked, setIsYourNewsClicked] = useState(false);
+  const auth_token = localStorage.getItem("auth_token");
 
   useEffect(() => {
     const fetchSports = async () => {
@@ -26,23 +32,44 @@ const SportsList: React.FC<SportsListProps> = ({ onSportClick }) => {
     fetchSports();
   }, []);
 
+  if (!auth_token) {
+    useEffect(() => {
+      if (sports.length > 0) {
+        onSportClick(sports[0].name);
+      }
+    }, [sports]);
+  }
+
+  useEffect(()=>{
+    onYourNewsClick(isYourNewsClicked)
+  },[])
+
   const handleSportClick = (selectedSport: string) => {
     onSportClick(selectedSport);
+    setIsYourNewsClicked(false);
+  };
+  const handleYourNewsClick = () => {
+    onYourNewsClick(isYourNewsClicked);
   };
 
-  useEffect(() => {
-    if (sports.length > 0) {
-      onSportClick(sports[0].name);
-    }
-  }, [sports]);
-
   return (
-    <div className="bg-slate-800 overflow-x-auto rounded-lg">
-      <ul className="flex space-x-5 p-5">
+    <div className="overflow-x-auto rounded-lg bg-slate-800">
+      <ul className="flex p-5 space-x-5">
+        {auth_token && (
+          <button
+            className="font-medium text-gray-400 border-red-700 active:text-white hover:text-white "
+            onClick={() => {
+              setIsYourNewsClicked(true);
+              handleYourNewsClick();
+            }}
+          >
+            Your News
+          </button>
+        )}
         {sports.map((sport) => (
           <button
             key={sport.id}
-            className="font-medium active:text-white hover:text-white border-red-700 text-gray-400 "
+            className="font-medium text-gray-400 border-red-700 active:text-white hover:text-white "
             onClick={() => handleSportClick(sport.name)}
           >
             {sport.name}
@@ -54,4 +81,3 @@ const SportsList: React.FC<SportsListProps> = ({ onSportClick }) => {
 };
 
 export default SportsList;
-

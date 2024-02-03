@@ -1,0 +1,56 @@
+import { API_ENDPOINT } from "../../config/constants";
+import { PreferencesDispatch, PreferencesListAvailableAction } from "./types";
+
+export const fetchPreferencesList = async (
+  dispatch: PreferencesDispatch
+) => {
+  try {
+    dispatch({
+      type: PreferencesListAvailableAction.FETCH_PREFERENCES_LIST_REQUEST,
+    });
+
+    const auth_token = localStorage.getItem("auth_token");
+
+    const responsePreferences = await fetch(
+      `${API_ENDPOINT}/user/preferences`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${auth_token}`,
+        },
+      }
+    );
+    const preferencesData = await responsePreferences.json();
+    console.log("Fetched preferences data:", preferencesData);
+
+    const responseArticles = await fetch(`${API_ENDPOINT}/articles`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const articlesData = await responseArticles.json();
+
+    const filteredArticles = articlesData.filter((article: any) => {
+      const articleTeams = article.teams.map((team: { name: any }) => team.name);
+      return (
+        articleTeams.some((team: any) =>
+          preferencesData.preferences.selectedTeams.includes(team)
+        ) ||
+        preferencesData.preferences.selectedSports.includes(article.sport.name)
+      );
+    });
+
+    dispatch({
+      type: PreferencesListAvailableAction.FETCH_PREFERENCES_LIST_SUCCESS,
+      payload: filteredArticles,
+    });
+  } catch (error) {
+    console.log("Error fetching PREFERENCES:", error);
+    dispatch({
+      type: PreferencesListAvailableAction.FETCH_PREFERENCES_LIST_FAILURE,
+      payload: "Unable to load PREFERENCES",
+    });
+  }
+};

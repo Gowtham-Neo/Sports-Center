@@ -20,21 +20,20 @@ const FavouriteArticleList: React.FC<FavouriteArticleListProps> = ({
     setSelectedTeam(selectedTeam);
   };
 
-  const handleArticleReadMore = (articleId: number) => {
-    fetch(`${API_ENDPOINT}/articles/${articleId}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Error while Fetching");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        onFavouriteArticleClick(data);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching article content:", error);
-      });
+  const handleArticleReadMore = async (articleId: number) => {
+    try {
+      const response = await fetch(`${API_ENDPOINT}/articles/${articleId}`);
+
+      if (!response.ok) {
+        throw new Error("Error while Fetching");
+      }
+
+      const data = await response.json();
+      onFavouriteArticleClick(data);
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching article content:", error);
+    }
   };
 
   useEffect(() => {
@@ -61,7 +60,7 @@ const FavouriteArticleList: React.FC<FavouriteArticleListProps> = ({
     };
 
     fetchArticles();
-  }, [selectedTeam]); 
+  }, [selectedTeam]);
 
   return (
     <div className="flex flex-col mt-5">
@@ -71,7 +70,7 @@ const FavouriteArticleList: React.FC<FavouriteArticleListProps> = ({
           <p className="pt-10 font-serif text-xl md:ps-36">Loading...</p>
         )}
         {isError && (
-          <p className="pt-10 font-serif text-xl md:ps-96">
+          <p className="pt-10 font-serif text-xl md:ps-36">
             Error fetching Articles
           </p>
         )}
@@ -88,12 +87,12 @@ const FavouriteArticleList: React.FC<FavouriteArticleListProps> = ({
                   <p className="mt-2 text-gray-600">
                     {new Date(article.date).toDateString()}
                   </p>
-                <button
-                  onClick={() => handleArticleReadMore(article.id)}
-                  className="flex px-12 py-2 mt-4 text-center text-white border rounded-md cursor-pointer w-max underline-none bg-slate-800 "
-                >
-                  Read More
-                </button>
+                  <button
+                    onClick={() => handleArticleReadMore(article.id)}
+                    className="flex px-12 py-2 mt-4 text-center text-white border rounded-md cursor-pointer w-max underline-none bg-slate-800 "
+                  >
+                    Read More
+                  </button>
                 </div>
               </div>
             ))}

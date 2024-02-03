@@ -38,19 +38,24 @@ const TeamsList: React.FC<TeamsListProps> = ({ onTeamClick }) => {
     fetchTeams();
   }, [setTeams, selectedSport]);
 
+  useEffect(() => {
+    if (team.length > 0) {
+      onTeamClick(team[0].name);
+    }
+  }, [team]);
+  
   const handleTeamClick = (selectedTeam: string) => {
     onTeamClick(selectedTeam);
   };
 
   return (
     <div className="items-start justify-center gap-4 mt-2 mb-3 md:flex md:items-center">
-      <SportsList onSportClick={handleSportClick}/>
+      <SportsList onSportClick={handleSportClick} />
       <div className="relative">
         <select
           className="p-2 bg-gray-200 border rounded"
           onChange={(e) => handleTeamClick(e.target.value)}
         >
-          <option>Select Team</option>
           {team.map((team) => (
             <option key={team.id} value={team.name}>
               {team.name}

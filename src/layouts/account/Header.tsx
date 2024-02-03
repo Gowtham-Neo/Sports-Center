@@ -1,19 +1,25 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import logo from "../../assets/images/logo.webp";
 import { IoSettingsOutline } from "react-icons/io5";
+import PreferencesDialog from "../../components/Preferences/PreferencesDialog"; 
 
 const classNames = (...classes: string[]): string =>
   classes.filter(Boolean).join(" ");
 
 const Appbar = () => {
   const auth_token = localStorage.getItem("auth_token");
+  const [isPreferencesOpen, setPreferencesOpen] = useState(false);
 
   const sportUserNavigation = [
     { name: "Change Password", href: "/change-password" },
     { name: "Sign Out", href: "/logout" },
   ];
+
+  const handlePreferences = () => {
+    setPreferencesOpen(true);
+  };
 
   return (
     <>
@@ -49,7 +55,10 @@ const Appbar = () => {
                   )}
                   {auth_token && (
                     <div className="block">
-                      <IoSettingsOutline className="w-5 h-6 text-gray-500 md:h-8 md:w-6 hover:text-black" />
+                      <button onClick={handlePreferences}>
+                        {" "}
+                        <IoSettingsOutline className="w-5 h-6 text-gray-500 cursor-pointer md:h-8 md:w-6 hover:text-black" />
+                      </button>
                     </div>
                   )}
                   {auth_token && (
@@ -97,6 +106,10 @@ const Appbar = () => {
           </div>
         )}
       </Disclosure>
+      <PreferencesDialog
+        isOpen={isPreferencesOpen}
+        closeModel={() => setPreferencesOpen(false)}
+      />
     </>
   );
 };

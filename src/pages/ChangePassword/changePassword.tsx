@@ -27,13 +27,11 @@ const ChangePasswordForm: React.FC = () => {
         },
         body: JSON.stringify({ current_password, new_password }),
       });
-      console.log("Server response:", response); 
+      console.log("Server response:", response);
 
       if (!response.ok) {
         throw new Error("Password Update failed");
       }
-
-
 
       console.log("Updated successfully");
       navigate("/");
@@ -50,7 +48,7 @@ const ChangePasswordForm: React.FC = () => {
             Current Password:
           </label>
           <input
-            type="password" 
+            type="password"
             name="current_password"
             id="current_password"
             value={current_password}

@@ -1,3 +1,4 @@
+
 export const initialStateMatches: MatchesListState = {
   matches: [],
   isLoading: false,
@@ -19,9 +20,19 @@ export interface Match {
   sportName: string;
   endsAt: string;
   isRunning: boolean;
-  teams: { id: number; name: string }[];
+  teams: Team[];
   score: Partial<Record<string, string>>;
 }
+export interface Team {
+  id: number;
+  plays: string;
+  name: string;
+}
+export const initialStateSport: Team = {
+  id: 1,
+  name :"Thunderbolts",
+  plays: "Basketball"
+};
 
 export enum MatchesListAvailableAction {
   FETCH_MATCHES_LIST_REQUEST = "FETCH_MATCHES_LIST_REQUEST",
