@@ -15,7 +15,7 @@ const Signup: React.FC = () => {
         </div>
         <div className="p-4 md:w-full ">
           <h1 className="mb-8 text-3xl font-bold text-center text-gray-800 ">
-            Sign in
+            Sign up
           </h1>
           <SignupForm />
         </div>
