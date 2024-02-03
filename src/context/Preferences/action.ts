@@ -1,9 +1,7 @@
 import { API_ENDPOINT } from "../../config/constants";
 import { PreferencesDispatch, PreferencesListAvailableAction } from "./types";
 
-export const fetchPreferencesList = async (
-  dispatch: PreferencesDispatch
-) => {
+export const fetchPreferencesList = async (dispatch: PreferencesDispatch) => {
   try {
     dispatch({
       type: PreferencesListAvailableAction.FETCH_PREFERENCES_LIST_REQUEST,
@@ -32,13 +30,16 @@ export const fetchPreferencesList = async (
     });
     const articlesData = await responseArticles.json();
 
+    const selectedTeams = preferencesData?.preferences?.selectedTeams || [];
+    const selectedSports = preferencesData?.preferences?.selectedSports || [];
+
     const filteredArticles = articlesData.filter((article: any) => {
-      const articleTeams = article.teams.map((team: { name: any }) => team.name);
+      const articleTeams = article.teams.map(
+        (team: { name: any }) => team.name
+      );
       return (
-        articleTeams.some((team: any) =>
-          preferencesData.preferences.selectedTeams.includes(team)
-        ) ||
-        preferencesData.preferences.selectedSports.includes(article.sport.name)
+        articleTeams.some((team: any) => selectedTeams.includes(team)) ||
+        selectedSports.includes(article.sport.name)
       );
     });
 
