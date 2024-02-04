@@ -1,21 +1,30 @@
+import React, { Suspense } from "react";
 import { MatchsProvider } from "../../context/LiveMatches/context";
 import AccountLayout from "../../layouts/account/index";
-import LiveMatchesList from "./LiveMatchesList";
+const LiveMatchesList = React.lazy(() => import("./LiveMatchesList"));
 import Trending from "./Trending";
 import { ArticlesProvider } from "../../context/Article/context";
 import { PreferencesProvider } from "../../context/Preferences/context";
-export const Home = () => {
+import ErrorBoundary from "../../components/ErrorBoundary";
+const Home = () => {
   return (
     <>
-      <PreferencesProvider>
-        <ArticlesProvider>
-          <AccountLayout />
-          <MatchsProvider>
-            <LiveMatchesList />
-          </MatchsProvider>
-          <Trending />
-        </ArticlesProvider>
-      </PreferencesProvider>
+      <ErrorBoundary>
+        <Suspense fallback={<div className="suspense-loading">Loading...</div>}>
+          <PreferencesProvider>
+            <ArticlesProvider>
+              <AccountLayout />
+              <MatchsProvider>
+                <LiveMatchesList />
+              </MatchsProvider>
+              <Trending />
+            </ArticlesProvider>
+          </PreferencesProvider>
+        </Suspense>
+      </ErrorBoundary>
     </>
   );
 };
+
+export default Home;
+

@@ -1,9 +1,10 @@
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { Home } from "../pages/Home";
-import Signin from "../pages/Signin"
-import Signup from "../pages/Signup"
-import Logout from "../pages/Logout";
-import ChangePassword from "../pages/ChangePassword/";
+const Home = React.lazy(() => import("../pages/Home"));
+const Signin = React.lazy(() => import("../pages/Signin"));
+const Signup = React.lazy(() => import("../pages/Signup"));
+const Logout = React.lazy(() => import("../pages/Logout"));
+const ChangePassword = React.lazy(() => import("../pages/ChangePassword"));
 import NotFoundPage from "../pages/NotFoundPage";
 
 const router = createBrowserRouter([
