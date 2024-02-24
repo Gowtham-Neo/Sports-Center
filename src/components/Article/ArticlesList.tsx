@@ -61,10 +61,10 @@ const ArticleList: React.FC<ArticleListProps> = ({ onArticleClick }) => {
       />
       <div className="w-full">
         {isLoading && (
-          <p className="pt-10 font-serif text-xl ps-96">Loading...</p>
+          <p className="p-16 font-serif text-xl md:ps-80">Loading...</p>
         )}
         {isError && (
-          <p className="pt-10 font-serif text-xl ps-96">
+          <p className="p-16 font-serif text-xl md:ps-80">
             Error fetching Articles
           </p>
         )}
