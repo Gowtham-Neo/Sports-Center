@@ -10,13 +10,11 @@ export const matchReducer: Reducer<MatchesListState, MatchActions> = (
   state = initialStateMatches,
   action
 ) => {
-  console.log(`HI this Type${action.type}`);
   switch (action.type) {
     case MatchesListAvailableAction.FETCH_MATCHES_LIST_REQUEST:
       return { ...state, isLoading: true };
     case MatchesListAvailableAction.FETCH_MATCHES_LIST_SUCCESS:
-      console.log("Existing state:", state);
-      console.log("New MATCHES payload:", action.payload);
+      
       return {
         ...state,
         isLoading: false,

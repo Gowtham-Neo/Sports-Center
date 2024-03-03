@@ -15,7 +15,6 @@ export const fetchArticles = async (dispatch: ArticleDispatch) => {
       type: ArticleListAvailableAction.FETCH_ARTICLES_LIST_SUCCESS,
       payload: articles,
     });
-    console.log(articles)
   } catch (error) {
     console.log("Error fetching Articles:", error);
     dispatch({

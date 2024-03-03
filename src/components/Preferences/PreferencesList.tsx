@@ -50,7 +50,7 @@ const PreferencesList: React.FC<PreferencesListProps> = ({
           <div>
             {isEmpty ? (
               <h2 className="p-16 font-serif text-xl md:ps-80">
-                No prefereces Selected
+                No preferences Selected
               </h2>
             ) : (
               yourNews.map((article: any) => (

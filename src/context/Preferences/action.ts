@@ -20,7 +20,6 @@ export const fetchPreferencesList = async (dispatch: PreferencesDispatch) => {
       }
     );
     const preferencesData = await responsePreferences.json();
-    console.log("Fetched preferences data:", preferencesData);
 
     const responseArticles = await fetch(`${API_ENDPOINT}/articles`, {
       method: "GET",
