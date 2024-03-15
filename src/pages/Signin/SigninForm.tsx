@@ -13,9 +13,9 @@ const SigninForm: React.FC = () => {
     event.preventDefault();
 
     if (!email || !password) {
-        setError("Please fill in both fields.");
-        return;
-      }
+      setError("Please fill in both fields.");
+      return;
+    }
     try {
       const response = await fetch(`${API_ENDPOINT}/users/sign_in`, {
         method: "POST",
@@ -24,10 +24,12 @@ const SigninForm: React.FC = () => {
       });
 
       if (!response.ok) {
+        setError("Invalid credentials !");
         throw new Error("Sign-in failed");
       }
-
+      
       const data = await response.json();
+      console.log(data)
       localStorage.setItem("auth_token", data.auth_token);
       localStorage.setItem("user", JSON.stringify(data.user));
 

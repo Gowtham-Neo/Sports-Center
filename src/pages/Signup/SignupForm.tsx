@@ -18,9 +18,6 @@ const SignupForm: React.FC = () => {
     }
 
     try {
-      console.log(name);
-      console.log(email);
-      console.log(password);
       const response = await fetch(`${API_ENDPOINT}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -29,6 +26,7 @@ const SignupForm: React.FC = () => {
 
       if (!response.ok) {
         console.log("response is: ", response);
+        setError("user Alreaady exists or server error occured!");
         throw new Error("Sign-up failed");
       }
 
