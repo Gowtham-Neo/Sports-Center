@@ -25,11 +25,14 @@ const SigninForm: React.FC = () => {
 
       if (!response.ok) {
         setError("Invalid credentials !");
+        setTimeout(() => {
+          setError(""); 
+        }, 3000); 
         throw new Error("Sign-in failed");
       }
-      
+
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       localStorage.setItem("auth_token", data.auth_token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
@@ -52,7 +55,10 @@ const SigninForm: React.FC = () => {
             name="email"
             id="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value)
+              setError("")
+            }}
             className="w-full px-3 py-2 leading-tight text-gray-700 border rounded-md focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
           />
         </div>
@@ -65,7 +71,10 @@ const SigninForm: React.FC = () => {
             name="password"
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value)
+              setError("")
+            }}
             className="w-full px-3 py-2 leading-tight text-gray-700 border rounded-md focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
           />
         </div>

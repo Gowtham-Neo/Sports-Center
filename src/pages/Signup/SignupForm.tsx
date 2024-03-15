@@ -27,6 +27,9 @@ const SignupForm: React.FC = () => {
       if (!response.ok) {
         console.log("response is: ", response);
         setError("user Alreaady exists or server error occured!");
+        setTimeout(()=>{
+          setError("")
+        },3000)
         throw new Error("Sign-up failed");
       }
 
