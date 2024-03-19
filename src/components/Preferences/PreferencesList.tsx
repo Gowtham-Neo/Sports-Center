@@ -56,10 +56,12 @@ const PreferencesList: React.FC<PreferencesListProps> = ({
               yourNews.map((article: any) => (
                 <div
                   key={article.id}
-                  className="flex flex-col-reverse p-4 my-4 mb-4 bg-white border border-gray-300 rounded-lg shadow-md md:flex-row"
+                  className="flex flex-col-reverse p-4 my-4 mb-4 bg-white border border-gray-300 rounded-lg shadow-md md:flex-row "
                 >
                   <div className="w-full md:w-3/4">
-                    <h2 className="text-lg font-medium">{article.title}</h2>
+                    <h2 className="mt-5 text-lg font-medium">
+                      {article.title}
+                    </h2>
                     <h2 className="text-gray-600">{article.summary}</h2>
                     <button
                       onClick={() => handleArticleReadMore(article.id)}
