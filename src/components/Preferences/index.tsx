@@ -17,11 +17,7 @@ const YourNews: React.FC = () => {
   return (
     <div>
       <div className="overflow-x-auto">
-        (
-        <PreferencesList
-          onArticleClick={handleArticleClick}
-        />
-        )
+        <PreferencesList onArticleClick={handleArticleClick} />
         <ArticleReadMore
           selectedArticle={selectedArticle}
           isOpen={selectedArticle !== null}

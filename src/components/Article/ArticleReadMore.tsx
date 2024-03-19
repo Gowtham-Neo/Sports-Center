@@ -40,7 +40,7 @@ const ArticleReadMore: React.FC<ArticleReadMoreProps> = ({
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-lg p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                <div className="absolute pt-2 pr-2 text-xl font-semibold duration-150 right-1 top-1 hover:rotate-90">
+                <div className="absolute pt-2 pr-2 text-xl font-semibold duration-150 right-1 top-1 hover:scale-125">
                   <button type="button" onClick={closeModel}>
                     <GrClose />
                   </button>
@@ -56,7 +56,7 @@ const ArticleReadMore: React.FC<ArticleReadMoreProps> = ({
                           >
                             {selectedArticle.title}
                           </Dialog.Title>
-                          <hr/>
+                          <hr />
                           <div className="mt-2">
                             <div className="w-full ">
                               <img
@@ -65,7 +65,7 @@ const ArticleReadMore: React.FC<ArticleReadMoreProps> = ({
                                 alt={selectedArticle.title}
                               />
                             </div>
-                            <hr/>
+                            <hr />
                             <p className="mt-4 text-gray-800 md:text-justify md:mx-4">
                               {selectedArticle.content}
                             </p>

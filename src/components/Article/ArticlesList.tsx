@@ -70,35 +70,41 @@ const ArticleList: React.FC<ArticleListProps> = ({ onArticleClick }) => {
             {selectedSport !== "Your News" ? (
               articles
                 .filter((article: any) => article.sport.name === selectedSport)
-                .map((article: any) => (
-                  <div
-                    key={article.id}
-                    className="flex flex-col p-4 my-4 mt-4 bg-white border border-gray-300 rounded-lg shadow-md md:flex-row"
-                  >
-                    <div className="w-full md:w-3/4">
-                      <h2 className="text-lg font-medium">{article.title}</h2>
-                      <h2 className="text-gray-600">{article.summary}</h2>
-                      <button
-                        onClick={() => handleArticleReadMore(article.id)}
-                        className="flex px-6 py-2 mt-2 text-center text-white border rounded-md cursor-pointer w-max underline-none bg-slate-800 "
-                      >
-                        Read More
-                      </button>
-                      <p className="mt-2 text-gray-600">
-                        {new Date(article.date).toDateString()}
-                      </p>
+                .map((article: any) =>
+                  article.length == 0 ? (
+                    <h2 key="no-articles">No articles to display</h2>
+                  ) : (
+                    <div
+                      key={article.id}
+                      className="flex flex-col-reverse p-4 my-4 mt-4 bg-white border border-gray-300 rounded-lg shadow-md md:flex-row"
+                    >
+                      <div className="w-full md:w-3/4">
+                        <h2 className="mt-5 text-lg font-medium">
+                          {article.title}
+                        </h2>
+                        <h2 className="text-gray-600">{article.summary}</h2>
+                        <button
+                          onClick={() => handleArticleReadMore(article.id)}
+                          className="flex px-6 py-2 mt-2 text-center text-white border rounded-md cursor-pointer w-max underline-none bg-slate-800 "
+                        >
+                          Read More
+                        </button>
+                        <p className="mt-2 text-gray-600">
+                          {new Date(article.date).toDateString()}
+                        </p>
+                      </div>
+                      <div className="w-full mt-4 md:h-40 md:w-1/4 md:mt-0 h-80">
+                        <img
+                          src={article.thumbnail}
+                          alt={article.title}
+                          className="object-cover w-full h-full mb-5 shadow-lg rounded-xl shadow-black"
+                        />
+                      </div>
                     </div>
-                    <div className="w-full mt-4 md:h-40 md:w-1/4 md:mt-0 h-80">
-                      <img
-                        src={article.thumbnail}
-                        alt={article.title}
-                        className="object-cover w-full h-full shadow-lg rounded-xl shadow-black"
-                      />
-                    </div>
-                  </div>
-                ))
+                  )
+                )
             ) : (
-              <YourNews />
+              <YourNews key="your-news" />
             )}
           </div>
         )}
