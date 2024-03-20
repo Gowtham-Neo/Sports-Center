@@ -63,6 +63,10 @@ const PreferencesDialog: React.FC<PreferencesDialogProps> = ({
     if (storedTeams) {
       setSelectedTeams(JSON.parse(storedTeams));
     }
+
+    // if (auth_token) {
+    //   handleSavePreferences();
+    // }
   }, []);
 
   const handleSportChange = (sportName: string) => {
@@ -100,7 +104,8 @@ const PreferencesDialog: React.FC<PreferencesDialogProps> = ({
       const updatedData = await response.json();
       fetchPreferencesList(preferencesDispatch);
 
-      console.log(updatedData)
+      setSelectedSports(updatedData.preferences.selectedSports);
+      setSelectedTeams(updatedData.preferences.selectedTeams);
 
       if (!response.ok) {
         throw new Error("Error updating user preferences");
