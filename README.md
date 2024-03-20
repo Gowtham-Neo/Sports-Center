@@ -21,4 +21,4 @@ Welcome to our React-based Sports News and Scores Dashboard! This dynamic platfo
 
 # Video Screencast
 
-  Loom URL : https://www.loom.com/share/2f07a0b6798e4036ae17a3ca252aeb5b?sid=5ecbf378-2f10-4672-a0f0-e1a687be1f9a
+  Loom URL : https://www.loom.com/share/34efb98b073548b2ad0ae44f3faa7200?sid=243ebb67-7dde-45b5-ab97-2f3f678da2f8
