@@ -39,7 +39,7 @@ const ChangePasswordForm: React.FC = () => {
         setTimeout(() => {
           setError(""); 
         }, 3000);
-        //Branch-A
+        //Merge-Conflict Branch-A
         console.log("Incorrect password {A}")
       } else {
         navigate("/");
