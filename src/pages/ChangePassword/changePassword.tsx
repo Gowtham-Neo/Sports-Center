@@ -28,11 +28,21 @@ const ChangePasswordForm: React.FC = () => {
         body: JSON.stringify({ current_password, new_password }),
       });
 
-      if (!response.ok) {
-        throw new Error("Password Update failed");
+      
+      if (response.status === 401) {
+        setError("Password update failed. Please try again later.");
+        setTimeout(() => {
+          setError(""); 
+        }, 3000);
+      } else if (!response.ok) {
+        setError("Incorrect current password. Please try again.");
+        setTimeout(() => {
+          setError(""); 
+        }, 3000);
+      } else {
+        navigate("/");
       }
 
-      navigate("/");
     } catch (error) {
       console.error("Update failed:", error);
     }
