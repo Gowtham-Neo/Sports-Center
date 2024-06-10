@@ -39,8 +39,8 @@ const ChangePasswordForm: React.FC = () => {
         setTimeout(() => {
           setError(""); 
         }, 3000);
-        //Branch-B
-        console.log("Incorrect password {B}")
+        //Branch-A and Branch B
+        console.log("Incorrect password {A}{B}")
       } else {
         navigate("/");
       }
