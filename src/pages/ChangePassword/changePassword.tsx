@@ -27,7 +27,8 @@ const ChangePasswordForm: React.FC = () => {
         },
         body: JSON.stringify({ current_password, new_password }),
       });
-
+      //Feedback: Enhance Error handling of incorrect current password that should reflect in the user interface
+      
       if (!response.ok) {
         throw new Error("Password Update failed");
       }
