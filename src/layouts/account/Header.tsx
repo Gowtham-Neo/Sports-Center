@@ -14,7 +14,7 @@ const Appbar = () => {
 
   const sportUserNavigation = [
     { name: "Change Password", href: "/change-password" },
-    { name: "Sign Out", href: "/logout" },
+    { name: "Log Out", href: "/logout" },
   ];
 
   const handlePreferences = () => {
