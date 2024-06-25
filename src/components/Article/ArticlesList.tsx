@@ -84,8 +84,9 @@ const ArticleList: React.FC<ArticleListProps> = ({ onArticleClick }) => {
                         </h2>
                         <h2 className="text-gray-600">{article.summary}</h2>
                         <button
+                          id="btn"
                           onClick={() => handleArticleReadMore(article.id)}
-                          className="flex px-6 py-2 mt-2 text-center text-white border rounded-md cursor-pointer w-max underline-none bg-slate-800 "
+                          className="flex px-6 py-2 mt-2 text-center text-white border rounded-md cursor-pointer w-max underline-none bg-slate-800 btn"
                         >
                           Read More
                         </button>

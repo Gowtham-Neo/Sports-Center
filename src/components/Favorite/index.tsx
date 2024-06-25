@@ -16,8 +16,8 @@ const FavoriteContainer: React.FC = () => {
   };
 
   return (
-    <div className=" border bg-gray-300 px-4">
-      <h2 className="text-left text-xl font-bold mt-4">Favourites</h2>
+    <div className="px-4 bg-gray-300 border ">
+      <h2 className="mt-4 text-xl font-bold text-left">Favourites</h2>
       <FavouriteList onFavouriteArticleClick={handleFavouriteArticleClick} />
       <ArticleReadMore
         selectedArticle={selectedFavouriteArticle}
