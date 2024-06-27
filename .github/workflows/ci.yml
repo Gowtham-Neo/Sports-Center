@@ -17,7 +17,7 @@ jobs:
         run: npm run test
 
       - name: Run the app
-        run: npm start & sleep 5
+        run: npm run dev
 
       - name: Run integration tests
         run: npm run cypress:open
