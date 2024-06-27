@@ -85,6 +85,7 @@ const Appbar = () => {
                             <Menu.Item key={item.name}>
                               {({ active }) => (
                                 <a
+                                id="btn"
                                   href={item.href}
                                   className={classNames(
                                     active ? "bg-red-700 text-white" : "",

@@ -1,13 +1,6 @@
 
 describe('Sport Centre Application Tests', () => {
     
-    it('should have the correct title', () => {
-        cy.visit('https://sport-centre.netlify.app/', { timeout: 10000 })
-        cy.title({ timeout: 10000 }).should('include', 'Sports Center');
-    });
-
-    
-    
     it('should successfully change the password with correct credentials', () => {
         cy.visit('https://sport-centre.netlify.app/change-password', { timeout: 50000 })
 
@@ -30,7 +23,7 @@ describe('Sport Centre Application Tests', () => {
       });
 
       it('Sign-in Successfull', () => {
-        cy.visit('https://sport-centre.netlify.app/signin', { timeout: 100000 })
+        cy.visit('https://sport-centre.netlify.app/signin', { timeout: 50000 })
 
         cy.get('input[name="email"]').type('correct.user@example.com');
         cy.get('input[name="password"]').type('user.password');
@@ -39,8 +32,13 @@ describe('Sport Centre Application Tests', () => {
         cy.url().should('include', '/');
       });
 
+      it('should have the correct title', () => {
+        cy.visit('https://sport-centre.netlify.app/', { timeout: 50000 })
+        cy.title({ timeout: 10000 }).should('include', 'Sports Center');
+      });
+
       it('Displays error message for invalid credentials', () => {
-        cy.visit('https://sport-centre.netlify.app/signin', { timeout: 100000 })
+        cy.visit('https://sport-centre.netlify.app/signin', { timeout: 50000 })
 
         cy.get('input[name="email"]').type('invalid@example.com');
         cy.get('input[name="password"]').type('invalidpassword');
