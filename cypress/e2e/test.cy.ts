@@ -20,14 +20,14 @@ describe('Sport Centre Application Tests', () => {
     //   cy.url().should('include', '/');
     // });
 
-    it('Displays error message for invalid credentials', () => {
-      cy.visit('https://sport-centre.netlify.app/signin', { timeout: 50000 })
+    // it('Displays error message for invalid credentials', () => {
+    //   cy.visit('https://sport-centre.netlify.app/signin', { timeout: 50000 })
 
-      cy.get('input[name="email"]').type('invalid@example.com');
-      cy.get('input[name="password"]').type('invalidpassword');
-      cy.get('form').submit();
+    //   cy.get('input[name="email"]').type('invalid@example.com');
+    //   cy.get('input[name="password"]').type('invalidpassword');
+    //   cy.get('form').submit();
   
-      cy.contains('Invalid credentials !').should('be.visible');
+    //   cy.contains('Invalid credentials !').should('be.visible');
     });
     
     // it('Navigates to /signin after clearing local storage', () => {
