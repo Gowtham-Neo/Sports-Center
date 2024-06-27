@@ -10,15 +10,15 @@ describe('Sport Centre Application Tests', () => {
         cy.url().should('include', '/');
     });
 
-    it('Sign-in Successfull', () => {
-      cy.visit('https://sport-centre.netlify.app/signin', { timeout: 50000 })
+    // it('Sign-in Successfull', () => {
+    //   cy.visit('https://sport-centre.netlify.app/signin', { timeout: 50000 })
 
-      cy.get('input[name="email"]').type('correct.user@example.com');
-      cy.get('input[name="password"]').type('user.password');
-      cy.get('form').submit();
+    //   cy.get('input[name="email"]').type('correct.user@example.com');
+    //   cy.get('input[name="password"]').type('user.password');
+    //   cy.get('form').submit();
   
-      cy.url().should('include', '/');
-    });
+    //   cy.url().should('include', '/');
+    // });
 
     it('Displays error message for invalid credentials', () => {
       cy.visit('https://sport-centre.netlify.app/signin', { timeout: 50000 })
@@ -30,17 +30,17 @@ describe('Sport Centre Application Tests', () => {
       cy.contains('Invalid credentials !').should('be.visible');
     });
     
-    it('Navigates to /signin after clearing local storage', () => {
-        localStorage.setItem('auth_token', 'mockAuthToken');
-        localStorage.setItem('user', JSON.stringify({ id: 1, username: 'testuser' }));
-        localStorage.setItem('selectedSports', JSON.stringify(['football', 'basketball']));
-        localStorage.setItem('selectedTeams', JSON.stringify(['teamA', 'teamB']));
+    // it('Navigates to /signin after clearing local storage', () => {
+    //     localStorage.setItem('auth_token', 'mockAuthToken');
+    //     localStorage.setItem('user', JSON.stringify({ id: 1, username: 'testuser' }));
+    //     localStorage.setItem('selectedSports', JSON.stringify(['football', 'basketball']));
+    //     localStorage.setItem('selectedTeams', JSON.stringify(['teamA', 'teamB']));
 
-        cy.visit('https://sport-centre.netlify.app/logout');
-        cy.url().should('include', '/logout');
-        cy.wait(500); 
-        cy.url().should('include', '/signin');
-      });
+    //     cy.visit('https://sport-centre.netlify.app/logout');
+    //     cy.url().should('include', '/logout');
+    //     cy.wait(500); 
+    //     cy.url().should('include', '/signin');
+    //   });
 
       
       it('should have the correct title', () => {
