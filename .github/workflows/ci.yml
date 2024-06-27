@@ -17,5 +17,5 @@ jobs:
         run: npm run test
 
       - name: Run integration tests
-        run: npm run cypress:open
+        run: npx cypress run
           
