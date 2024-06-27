@@ -16,9 +16,6 @@ jobs:
       - name: Run unit tests
         run: npm run test
 
-      - name: Run the app
-        run: npm run dev
-
       - name: Run integration tests
         run: npm run cypress:open
           
