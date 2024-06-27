@@ -28,7 +28,7 @@ describe('Sport Centre Application Tests', () => {
     //   cy.get('form').submit();
   
     //   cy.contains('Invalid credentials !').should('be.visible');
-    });
+    // });
     
     // it('Navigates to /signin after clearing local storage', () => {
     //     localStorage.setItem('auth_token', 'mockAuthToken');
