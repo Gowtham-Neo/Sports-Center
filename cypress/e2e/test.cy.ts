@@ -9,6 +9,16 @@ describe('Sport Centre Application Tests', () => {
         cy.get('button[type="submit"]').click();
         cy.url().should('include', '/');
     });
+
+    it('Sign-in Successfull', () => {
+      cy.visit('https://sport-centre.netlify.app/signin', { timeout: 50000 })
+
+      cy.get('input[name="email"]').type('correct.user@example.com');
+      cy.get('input[name="password"]').type('user.password');
+      cy.get('form').submit();
+  
+      cy.url().should('include', '/');
+    });
     
     it('Navigates to /signin after clearing local storage', () => {
         localStorage.setItem('auth_token', 'mockAuthToken');
@@ -22,15 +32,7 @@ describe('Sport Centre Application Tests', () => {
         cy.url().should('include', '/signin');
       });
 
-      it('Sign-in Successfull', () => {
-        cy.visit('https://sport-centre.netlify.app/signin', { timeout: 50000 })
-
-        cy.get('input[name="email"]').type('correct.user@example.com');
-        cy.get('input[name="password"]').type('user.password');
-        cy.get('form').submit();
-    
-        cy.url().should('include', '/');
-      });
+      
 
       it('should have the correct title', () => {
         cy.visit('https://sport-centre.netlify.app/', { timeout: 50000 })
