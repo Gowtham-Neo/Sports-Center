@@ -1,0 +1,16 @@
+{
+    "translation": {
+      "sportsCenter": "Sportzentrum",
+      "preferences": "Einstellungen",
+      "changePassword": "Passwort ändern",
+      "logout": "Abmelden",
+      "signup": "Registrieren",
+      "signin": "Anmelden",
+      "LiveMatches": "Live-Spiele",
+      "trendingNews": "Trends Nachrichten",
+      "favourites": "Favoriten",
+      "favouriteSports": "Lieblingssportarten",
+      "favouriteTeams": "Lieblingsmannschaften",
+      "selectFavouriteSportsAndTeams": "Bitte wählen Sie Ihre Lieblingssportarten und -mannschaften"
+    }
+  }

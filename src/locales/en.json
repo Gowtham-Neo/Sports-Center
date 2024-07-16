@@ -1,0 +1,17 @@
+{
+  "translation":{
+    "sportsCenter": "Sports Center",
+    "preferences": "Preferences",
+    "changePassword": "Change Password",
+    "logout": "Logout",
+    "signup": "Signup",
+    "signin": "Signin",
+    "LiveMatches": "Live Matches",
+    "trendingNews": "Trending News",
+    "favourites": "Favourites",
+    "favouriteSports": "Favourite Sports",
+    "favouriteTeams": "Favourite Teams",
+    "selectFavouriteSportsAndTeams": "Please Select your Favourite Sports and Teams"
+  }
+}
+  

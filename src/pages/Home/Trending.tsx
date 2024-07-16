@@ -1,12 +1,14 @@
 import React from "react";
 import Article from "../../components/Article/index";
 import FavoriteContainer from "../../components/Favorite";
+import { useTranslation } from "react-i18next";
 
 const Trending: React.FC = () => {
+  const { t, } = useTranslation();
   return (
-    <div className="md:m-5 m-3">
-      <h2 className="text-2xl font-semibold mb-4">Trending News</h2>
-      <div className="md:grid grid-cols-3 gap-1">
+    <div className="m-3 md:m-5">
+      <h2 className="mb-4 text-2xl font-semibold">{t('trendingNews')}</h2>
+      <div className="grid-cols-3 gap-1 md:grid">
         <div className="col-span-2">
           <Article />
         </div>

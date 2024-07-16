@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FiRefreshCw } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 import {
   useMatchesState,
   useMatchesDispatch,
@@ -9,12 +10,14 @@ import {
   refreshMatch,
 } from "../../context/LiveMatches/action";
 
-const LiveMatchesList: React.FC = () => {
+
+const LiveMatchesList = () => {
   const { matches, isLoading, isError } = useMatchesState();
   const dispatch = useMatchesDispatch();
-
+  const { t } = useTranslation();
   useEffect(() => {
     fetchLiveMatchesAndDetails(dispatch);
+
   }, [dispatch]);
 
   const handleRefreshMatch = async (matchId: number) => {
@@ -24,7 +27,7 @@ const LiveMatchesList: React.FC = () => {
   return (
     <div className="p-3 border border-none rounded-lg shadow-sm md:-mt-10 shadow-black md:m-5 bg-gradient-to-r from-red-700 to-green-700">
       <h2 className="mb-2 text-xl font-semibold md:text-2xl md:text-white">
-        Live Matches
+      {t('LiveMatches')}
       </h2>
       <div className="overflow-x-auto ">
         <div className=" w-max">

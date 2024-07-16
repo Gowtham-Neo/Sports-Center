@@ -1,0 +1,17 @@
+{
+  "translation":{
+    "sportsCenter": "Centre Sportif",
+    "preferences": "Préférences",
+    "changePassword": "Changer le Mot de Passe",
+    "logout": "Se Déconnecter",
+    "signup": "S'inscrire",
+    "signin": "Se Connecter",
+    "LiveMatches": "Matchs en Direct",
+    "trendingNews": "Actualités en Tendance",
+    "favourites": "Favoris",
+    "favouriteSports": "Sports Favoris",
+    "favouriteTeams": "Équipes Favorites",
+    "selectFavouriteSportsAndTeams": "Veuillez Sélectionner vos Sports et Équipes Favoris"
+  }
+}
+  
