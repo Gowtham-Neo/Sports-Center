@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import logo from "../../assets/images/logo.webp";
@@ -29,16 +29,18 @@ const Appbar = () => {
     console.log("Language change to:", event.target.value);
     changeLanguage(event.target.value);
   };
+  let currentLanguage=language
+  useEffect(()=>{
+    currentLanguage='en'
+  })
   
-  const currentLanguage = language;
 
-
-  const dateTime = currentLanguage + "-" + currentLanguage.toUpperCase();
+  const dateTime = currentLanguage
 
   const dateFormatter = new Intl.DateTimeFormat(dateTime, {
     year: "2-digit",
     month: "2-digit",
-    day: "2-digit",
+    day: "numeric",
   });
 
   const timeFormatter = new Intl.DateTimeFormat(dateTime, {
