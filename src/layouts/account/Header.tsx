@@ -27,7 +27,9 @@ const Appbar = () => {
   
   const handleLanguageChange = (event: any) => {
     console.log("Language change to:", event.target.value);
+    // throw new Error("An Error Occured while Changing the Language")
     changeLanguage(event.target.value);
+    
   };
   let currentLanguage=language
   useEffect(()=>{
