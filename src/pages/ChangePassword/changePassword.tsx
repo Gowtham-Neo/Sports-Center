@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { API_ENDPOINT } from "../../config/constants";
+import { useNavigate } from "react-router-dom";
 
 const ChangePasswordForm: React.FC = () => {
   const auth_token = localStorage.getItem("auth_token");
@@ -7,6 +8,7 @@ const ChangePasswordForm: React.FC = () => {
   const [current_password, setcurrent_password] = useState("");
   const [new_password, setnew_password] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handlesubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,8 +27,21 @@ const ChangePasswordForm: React.FC = () => {
         },
         body: JSON.stringify({ current_password, new_password }),
       });
-      //Feedback: Enhance Error handling of incorrect current password that should reflect in the user interface
-
+      if (response.status === 401) {
+        setError("Password update failed. Please try again later.");
+        setTimeout(() => {
+          setError("");
+        }, 3000);
+      } else if (!response.ok) {
+        setError("Incorrect current password. Please try again.");
+        setTimeout(() => {
+          setError("");
+        }, 3000);
+        //Branch-A and Branch B
+        console.log("Incorrect password {A}{B}");
+      } else {
+        navigate("/");
+      }
       if (!response.ok) {
         throw new Error("Password Update failed");
       }
