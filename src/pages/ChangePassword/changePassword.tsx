@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { API_ENDPOINT } from "../../config/constants";
-import { useNavigate } from "react-router-dom";
 
 const ChangePasswordForm: React.FC = () => {
   const auth_token = localStorage.getItem("auth_token");
@@ -8,7 +7,6 @@ const ChangePasswordForm: React.FC = () => {
   const [current_password, setcurrent_password] = useState("");
   const [new_password, setnew_password] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const navigate = useNavigate();
 
   const handlesubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
