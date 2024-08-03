@@ -42,7 +42,7 @@ describe('Sport Centre Application Tests', () => {
         cy.url().should('include', '/signin');
       });
 
-      // comment
+
       
       it('should have the correct title', () => {
         cy.visit('https://sport-centre.netlify.app/', { timeout: 50000 })
