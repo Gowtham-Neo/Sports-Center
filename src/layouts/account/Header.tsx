@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import logo from "../../assets/images/logo.webp";
@@ -30,9 +30,7 @@ const Appbar = () => {
     changeLanguage(event.target.value);
   };
   let currentLanguage=language
-  useEffect(()=>{
-    currentLanguage='en'
-  })
+
   
 
   const dateTime = currentLanguage
