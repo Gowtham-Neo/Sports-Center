@@ -29,7 +29,7 @@ const GeminiAI: React.FC<GeminiAIProps> = ({ apiKey }) => {
             {
               parts: [
                 {
-                  text: prompt.length > 5 ? prompt + "in 2 Lines" : prompt,
+                  text: prompt.length > 5 ? prompt + "in 4 Lines" : prompt,
                 },
               ],
             },
@@ -113,7 +113,7 @@ const GeminiAI: React.FC<GeminiAIProps> = ({ apiKey }) => {
             />
             <button
               type="submit"
-              className="p-2 text-white bg-blue-500 rounded-r-lg hover:bg-blue-600"
+              className="p-2 ml-4 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
             >
               <IoSend />
             </button>
