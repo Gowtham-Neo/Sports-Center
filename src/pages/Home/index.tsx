@@ -6,6 +6,7 @@ import Trending from "./Trending";
 import { ArticlesProvider } from "../../context/Article/context";
 import { PreferencesProvider } from "../../context/Preferences/context";
 import ErrorBoundary from "../../components/ErrorBoundary";
+
 const Home = () => {
   return (
     <>
@@ -18,6 +19,7 @@ const Home = () => {
                 <LiveMatchesList />
               </MatchsProvider>
               <Trending />
+             
             </ArticlesProvider>
           </PreferencesProvider>
         </Suspense>
@@ -27,4 +29,3 @@ const Home = () => {
 };
 
 export default Home;
-
