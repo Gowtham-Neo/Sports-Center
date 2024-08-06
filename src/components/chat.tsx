@@ -74,7 +74,7 @@ const GeminiAI: React.FC<GeminiAIProps> = ({ apiKey }) => {
         className="fixed p-4 bg-blue-500 rounded-full shadow-lg cursor-pointer bottom-4 right-4"
         onClick={() => setIsChatOpen(!isChatOpen)}
       >
-        <FaRobot className="text-white" size={24} />
+        <FaRobot className="text-white" size={30} />
       </div>
 
       {isChatOpen && (
